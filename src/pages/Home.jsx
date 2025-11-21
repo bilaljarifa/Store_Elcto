@@ -1,4 +1,3 @@
-import BundleCreator from '../components/BundleCreator'
 import SmartProductFinder from '../components/SmartProductFinder'
 import './Home.css'
 

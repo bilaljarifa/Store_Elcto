@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/Header'
+import AnnouncementBanner from './components/AnnouncementBanner'
+import WelcomeBanner from './components/WelcomeBanner'
 import Footer from './components/Footer'
 import Cart from './components/Cart'
 import Home from './pages/Home'
@@ -13,11 +15,18 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import OrderTracking from './pages/OrderTracking'
 import AdminPanel from './pages/AdminPanel'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import Shipping from './pages/Shipping'
+import Returns from './pages/Returns'
+import Warranty from './pages/Warranty'
+import Services from './pages/Services'
 import './App.css'
 
 function App() {
   const [cartItems, setCartItems] = useState([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [showWelcome, setShowWelcome] = useState(true)
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
@@ -75,7 +84,9 @@ function App() {
           onCartClick={() => setIsCartOpen(!isCartOpen)}
           onAddToCart={addToCart}
         />
-        <main className="main-content">
+        {showWelcome && <WelcomeBanner onClose={() => setShowWelcome(false)} />}
+        <AnnouncementBanner className={showWelcome ? 'with-welcome' : ''} />
+        <main className={`main-content ${showWelcome ? 'with-welcome' : ''}`}>
           <Routes>
             <Route
               path="/"
@@ -105,6 +116,12 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/tracking" element={<OrderTracking />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/returns" element={<Returns />} />
+            <Route path="/warranty" element={<Warranty />} />
+            <Route path="/services" element={<Services />} />
           </Routes>
         </main>
         <Footer />

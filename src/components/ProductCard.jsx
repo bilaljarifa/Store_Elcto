@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import './ProductCard.css'
 
 function ProductCard({ product, onAddToCart }) {
   const { t } = useTranslation()
+  const [isHovered, setIsHovered] = useState(false)
   
   const handleAddToCart = (e) => {
     e.preventDefault()
@@ -17,8 +19,13 @@ function ProductCard({ product, onAddToCart }) {
 
   return (
     <Link to={`/product/${product.slug}`} className="product-card-link">
-      <div className="product-card">
+      <div 
+        className="product-card"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div className="product-image-container">
+          <div className="image-overlay"></div>
           <img
             src={product.image}
             alt={product.name}
@@ -27,25 +34,20 @@ function ProductCard({ product, onAddToCart }) {
               e.target.src = 'https://via.placeholder.com/400x300?text=Product+Image'
             }}
           />
-          <span className="product-category">{product.category}</span>
           {discount > 0 && (
-            <span className="product-discount">-{discount}%</span>
-          )}
-          {product.rating && (
-            <div className="product-rating">
-              <span>⭐</span>
-              <span>{product.rating}</span>
+            <div className="product-discount-badge">
+              -{discount}%
             </div>
           )}
+          <div className={`quick-view-btn ${isHovered ? 'show' : ''}`}>
+            Quick View
+          </div>
         </div>
         <div className="product-info">
+          <div className="product-meta-top">
+            {product.category}
+          </div>
           <h3 className="product-name">{product.name}</h3>
-          <p className="product-description">{product.description}</p>
-          {product.shippingOrigin && (
-            <p className="product-shipping">
-              📍 {t('shippedFrom')}: {product.shippingOrigin} ({product.shippingTime})
-            </p>
-          )}
           <div className="product-footer">
             <div className="product-pricing">
               <span className="product-price">
@@ -58,14 +60,16 @@ function ProductCard({ product, onAddToCart }) {
               )}
             </div>
             <button 
-              className="add-to-cart-btn" 
+              className={`add-to-cart-btn ${isHovered ? 'pulse' : ''}`}
               onClick={handleAddToCart}
               aria-label={t('addToCart')}
             >
-              {t('addToCart')}
+              <span className="btn-text">{t('addToCart')}</span>
+              <span className="btn-icon">+</span>
             </button>
           </div>
         </div>
+        <div className="card-shine"></div>
       </div>
     </Link>
   )

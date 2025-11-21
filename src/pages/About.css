@@ -55,6 +55,11 @@
   transform: perspective(1000px) rotateX(0deg) translateZ(0);
 }
 
+[data-theme='dark'] .about-card {
+  background: #1a1a1a;
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
 .about-card::before {
   content: '';
   position: absolute;

@@ -200,6 +200,11 @@
   box-shadow: var(--shadow-sm);
 }
 
+[data-theme='dark'] .detail-specs {
+  background: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .detail-specs h2 {
   font-size: 1rem;
   font-weight: 700;
@@ -275,6 +280,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-normal);
+}
+
+[data-theme='dark'] .wishlist-btn {
+  background: #1a1a1a;
+  border-color: #333333;
+  color: #e5e5e5;
 }
 
 .wishlist-btn:hover {
@@ -372,6 +383,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+[data-theme='dark'] .comment-input {
+  background: #1a1a1a;
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #e5e5e5;
+}
+
 .comment-input:focus {
   outline: none;
   border-color: var(--color-primary);
@@ -390,6 +407,12 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   min-width: 120px;
+}
+
+[data-theme='dark'] .comment-rating-select {
+  background: #1a1a1a;
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #e5e5e5;
 }
 
 .comment-rating-select:focus {
@@ -412,6 +435,12 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   min-height: 120px;
+}
+
+[data-theme='dark'] .comment-textarea {
+  background: #1a1a1a;
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #e5e5e5;
 }
 
 .comment-textarea:focus {
@@ -459,6 +488,11 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+[data-theme='dark'] .comment-item {
+  background: #1a1a1a;
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .comment-item::before {
